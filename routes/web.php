@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Route::get('chat', function () {
+=======
+Route::get('/chat', function() {
+>>>>>>> develop
 	return view('chat');
 });
