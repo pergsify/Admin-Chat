@@ -1,10 +1,6 @@
 <template lang="html">
 	<div class="chat-composer">
-<<<<<<< HEAD
-		<input type="text" name="message" placeholder="Enter your message here..." v-model="messageText" @keyup.enter="sendMessage" required="">
-=======
 		<input type="text" name="message" placeholder="Enter your message here..." v-model="messageText" @keyup.enter="sendMessage">
->>>>>>> develop
 		<button class="btn btn-primary" @click="sendMessage">Send</button>
 	</div>
 </template>
