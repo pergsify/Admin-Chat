@@ -24,7 +24,8 @@ const app = new Vue({
     el: '#app' ,
     data: {
     	messages: [
-			{
+			/*
+            {
 				message: "Hey June",
 				user: "jun"
 			},
@@ -32,6 +33,7 @@ const app = new Vue({
 				message: "Hey Rold!",
 				user: "Harold"
 			}
+            */
 		]
     }, 
     methods: {
@@ -40,6 +42,15 @@ const app = new Vue({
     		//console.log('message added'); 
     		this.messages.push(message);
     		// persist to database etc
+            axios.post('messages', message).then(response => {
+                // do whatever
+            })
     	}
+    },
+    created() {
+        axios.get('messages').then(response => {
+           this.messages = response.data;
+            //console.log(response);
+        });
     }
 });
