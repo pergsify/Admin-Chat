@@ -17,7 +17,11 @@
 				//console.log(this.messageText);
 				this.$emit('messagesent', {
 					message: this.messageText,
-					user: "John Cena"
+					//user: "John Cena"
+					user: {
+						name: $('.navbar-right .dropdown-toggle').text()
+						//name: '{{ Auth::user() }}'
+						}
 					});
 				this.messageText = '';
 			}
