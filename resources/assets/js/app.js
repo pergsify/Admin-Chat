@@ -34,7 +34,8 @@ const app = new Vue({
 				user: "Harold"
 			}
             */
-		]
+		],
+        usersInRoom: [],
     }, 
     methods: {
     	addMessage(message) {
@@ -52,5 +53,32 @@ const app = new Vue({
            this.messages = response.data;
             //console.log(response);
         });
+
+        
+        
+        Echo.join('chatroom')
+            .here((users) => {
+                this.usersInRoom = users;
+            })
+            .joining((user) => {
+                this.usersInRoom.push(user);
+            })
+            .leaving((user) => {
+                this.usersInRoom = this.usersInRoom.filter(u => u != user)
+            })
+            .listen('MessagePosted', (e) => {
+                this.messages.push({
+                   message: e.message.message,
+                   user: e.user
+
+               });
+                //console.log(e);
+            });
+        
+      /*
+      Echo.join('chatroom').listen('.event', (e) => {
+            console.log('nothing happen')
+        });
+        */
     }
 });
